@@ -28,7 +28,7 @@ const app = express();
 app.use(express.json()); 
 
 app.use(cors({
-    orign: 'http://localhost:5173',
+    orign: 'https://businessschool.delsu.edu.ng/',
     Credentials: true,
     AllowedHeaders: ['Content-Type', 'Authorization']
 }))
