@@ -9,13 +9,11 @@ import { verifyToken } from "../utils/verifyUser.js";
 
 const router = express.Router();
 
-// Get the announcement (public)
-router.get("/", getAnnounce);
+router.post("/create", verifyToken, create);
 
-// Create new announcement (admin only)
-router.post("/", verifyToken, create);
 
-// Update the announcement (admin only)
-router.put("/", verifyToken, updateAnnounce);
+router.get("/getannounce", getAnnounce);
+
+router.put("/updateannounce/:userId", verifyToken, updateAnnounce);
 
 export default router;

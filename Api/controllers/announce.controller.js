@@ -39,7 +39,7 @@ try {
     const announce = await Announce.findOne()
     
         if (!announce) {
-      return res.status(404).json({ message: "Settings not found" });
+      return res.status(404).json({ message: "No announcement found" });
     }
 
     res.status(200).json(announce)

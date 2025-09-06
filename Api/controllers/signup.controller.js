@@ -2,6 +2,9 @@ import User from '../models/user.model.js';
 import bcryptjs from 'bcryptjs'
 import { errorHandler } from '../utils/error.js';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // User registration with email and password
 export const signup = async (req, res, next) => {
@@ -69,6 +72,9 @@ export const signin = async (req, res, next) => {
         res.status(200)
             .cookie('access_token', token, {
                 httpOnly: true,
+                sameSite: 'none',
+                secure: true,
+                maxAge: 3600000 // 1 hour
             })
             .json(rest)
 
@@ -98,7 +104,10 @@ export const google = async (req, res, next) => {
             
             res.status(200)
                 .cookie('access_token', token, {
-                    httpOnly: true
+                    httpOnly: true,
+                    sameSite: 'none',
+                    secure: true,
+                    maxAge: 3600000 // 1 hour   
                 })
                 .json(rest)
         } else {
@@ -121,6 +130,9 @@ export const google = async (req, res, next) => {
             res.status(200)
                 .cookie('access_token', token, {
                     httpOnly: true,
+                    sameSite: 'none',
+                    secure: true,
+                    maxAge: 3600000 // 1 hour   
                 })
                 .json(rest)
 

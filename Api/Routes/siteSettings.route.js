@@ -10,7 +10,7 @@ router.get("/", getSettings);
 router.get("/:section", getSection);
 
 // Admin only
-router.put("/", verifyToken, updateSettings);
-router.put("/:section", verifyToken, updateSection);
+router.put("/", updateSettings);
+router.put("/:section", updateSection);
 
 export default router;
