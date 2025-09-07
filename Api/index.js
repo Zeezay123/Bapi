@@ -60,7 +60,7 @@ app.use('/api/post',postRoutes)
 //   res.sendFile(path.join(__dirname, 'peace-page', 'dist', 'index.html'));
 // });
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5000
 
 
 
@@ -85,8 +85,8 @@ const connectToDb = async () => {
         
         // Start the server only AFTER successful database connection
         // This ensures the app doesn't accept requests if the database is unavailable
-        app.listen(process.env.PORT || 3000, () => {
-            console.log(`Server is running on port ${process.env.PORT || 3000}`);
+        app.listen(process.env.PORT || 5000, () => {
+            console.log(`Server is running on port ${process.env.PORT || 5000}`);
         })
         
     } catch(error) {

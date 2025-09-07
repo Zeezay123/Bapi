@@ -2,11 +2,9 @@
   "name": "bapi",
   "version": "1.0.0",
   "type": "module",
-  "main": "index.js",
+  "main": "Api/index.js",
   "scripts": {
-    "dev": "nodemon Api/index.js",
-    "start": "node Api/index.js",
-    "build": "npm install"
+    "start": "node Api/index.js"
   },
   "keywords": [],
   "author": "",
