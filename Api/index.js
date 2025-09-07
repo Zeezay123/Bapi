@@ -9,28 +9,27 @@ import facultyRoutes from './Routes/faculty.route.js'
 import departRoutes from './Routes/depart.route.js';
 import courseRoutes from './Routes/course.route.js'
 import settingRoutes from './Routes/settings.route.js'
-import focusRoutes from './Routes/focus.route.js'
 import staffRoutes from './Routes/staff.route.js'
 import cookieParser from 'cookie-parser';
 import announceRoutes from './Routes/announce.route.js'
+import focusRoutes from './Routes/focus.route.js'
+
+
 
 // Load environment variables from .env file
 // This allows us to use variables like MONGO_URL and JWT_SECRET from the .env file
 dotenv.config();
 
 // Get the MongoDB connection string from environment variables
-
-
 const MONGO_URL = process.env.MONGO_URL;
 
 const app = express();
 
-
-
 app.use(cors({
-    origin: 'https://businessschool.delsu.edu.ng',
+    origin: 'https://businessschool.delsu.edu.ng', 
     credentials: true,
-}))
+     
+}));
 
 app.use(express.json()); 
 app.use(cookieParser());
@@ -39,6 +38,7 @@ app.use('/api/users', userRoutes);
 
 app.use('/api/auth', authRoutes);
 
+//create faculty routes
 
 app.use('/api/faculty', facultyRoutes )
 app.use('/api/departments', departRoutes)
@@ -50,7 +50,19 @@ app.use('/api/focus', focusRoutes )
 app.use('/api/post',postRoutes)
 
 
+
+// const __dirname = path.resolve()
+
+// app.use(express.static(path.join(__dirname, 'peace-page/dist'))); 
+
+// // Handle all other routes
+// app.use((req, res) => {
+//   res.sendFile(path.join(__dirname, 'peace-page', 'dist', 'index.html'));
+// });
+
 const PORT = process.env.PORT || 3000
+
+
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500; // Use custom status code or default to 500
@@ -62,9 +74,6 @@ app.use((err, req, res, next) => {
     })
 })
 
-
-
-
 // Function to connect to MongoDB database
 const connectToDb = async () => {
     try {   
@@ -72,10 +81,12 @@ const connectToDb = async () => {
         await mongoose.connect(MONGO_URL)
         
         console.log('Connected to MongoDB');
-   
- 
+        
+        
+        // Start the server only AFTER successful database connection
+        // This ensures the app doesn't accept requests if the database is unavailable
         app.listen(process.env.PORT || 3000, () => {
-            console.log(`Server is running on port: ${process.env.PORT || 3000}`);
+            console.log(`Server is running on port ${process.env.PORT || 3000}`);
         })
         
     } catch(error) {
