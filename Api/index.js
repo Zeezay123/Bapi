@@ -60,7 +60,7 @@ app.use((err, req, res, next) => {
 })
 
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT
 
 // Function to connect to MongoDB database
 const connectToDb = async () => {
@@ -72,7 +72,7 @@ const connectToDb = async () => {
          console.log("Database name:", mongoose.connection.name);
  
         app.listen(PORT, () => {
-            console.log('Server is running on port: ', PORT);
+            console.log(`Server is running on port${PORT}`);
         })
         
     } catch(error) {
