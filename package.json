@@ -2,9 +2,9 @@
   "name": "bapi",
   "version": "1.0.0",
   "type": "module",
-  "main": "api/index.js",
+  "main": "Api/index.js",
   "scripts": {
-    "start": "node api/index.js"
+    "start": "node Api/index.js"
   },
   "keywords": [],
   "author": "",
