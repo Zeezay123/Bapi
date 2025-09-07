@@ -30,7 +30,6 @@ app.use(express.json());
 app.use(cors({
     origin: 'https://businessschool.delsu.edu.ng/',
     credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
 app.use(cookieParser());
@@ -60,7 +59,7 @@ app.use((err, req, res, next) => {
 })
 
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000
 
 // Function to connect to MongoDB database
 const connectToDb = async () => {
