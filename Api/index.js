@@ -60,7 +60,7 @@ app.use('/api/post',postRoutes)
 //   res.sendFile(path.join(__dirname, 'peace-page', 'dist', 'index.html'));
 // });
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8080
 
 
 
