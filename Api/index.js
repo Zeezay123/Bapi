@@ -25,13 +25,14 @@ const MONGO_URL = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(express.json()); 
+
 
 app.use(cors({
-    origin: 'https://businessschool.delsu.edu.ng/',
+    origin: 'https://businessschool.delsu.edu.ng',
     credentials: true,
 }))
 
+app.use(express.json()); 
 app.use(cookieParser());
 
 app.use('/api/users', userRoutes);
@@ -48,6 +49,9 @@ app.use('/api/announce', announceRoutes)
 app.use('/api/focus', focusRoutes )
 app.use('/api/post',postRoutes)
 
+
+const PORT = process.env.PORT || 3000
+
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500; // Use custom status code or default to 500
     const message = err.message || 'Internal Server Error'; // Use custom message or default
@@ -59,7 +63,7 @@ app.use((err, req, res, next) => {
 })
 
 
-const PORT = process.env.PORT || 3000
+
 
 // Function to connect to MongoDB database
 const connectToDb = async () => {
@@ -68,10 +72,10 @@ const connectToDb = async () => {
         await mongoose.connect(MONGO_URL)
         
         console.log('Connected to MongoDB');
-         console.log("Database name:", mongoose.connection.name);
+   
  
-        app.listen(PORT, () => {
-            console.log(`Server is running on port: ${PORT}`);
+        app.listen(process.env.PORT || 3000, () => {
+            console.log(`Server is running on port: ${process.env.PORT || 3000}`);
         })
         
     } catch(error) {
