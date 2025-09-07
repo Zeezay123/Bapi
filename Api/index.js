@@ -28,9 +28,9 @@ const app = express();
 app.use(express.json()); 
 
 app.use(cors({
-    orign: 'https://businessschool.delsu.edu.ng/',
-    Credentials: true,
-    AllowedHeaders: ['Content-Type', 'Authorization']
+    origin: 'https://businessschool.delsu.edu.ng/',
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization']
 }))
 
 app.use(cookieParser());
@@ -72,7 +72,7 @@ const connectToDb = async () => {
          console.log("Database name:", mongoose.connection.name);
  
         app.listen(PORT, () => {
-            console.log(`Server is running on port${PORT}`);
+            console.log(`Server is running on port: ${PORT}`);
         })
         
     } catch(error) {
